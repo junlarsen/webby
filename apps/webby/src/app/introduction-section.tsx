@@ -3,7 +3,7 @@ import { Section } from '@/components/section/section';
 import { Title } from '@/components/text/title';
 import Image from 'next/image';
 import { Text } from '@/components/text/text';
-import { Link} from '@/components/text/link';
+import { Link } from '@/components/text/link';
 
 export const IntroductionSection: FC = () => {
   return (
