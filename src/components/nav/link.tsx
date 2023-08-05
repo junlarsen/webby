@@ -1,0 +1,26 @@
+import { FC } from 'react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import clsx from 'clsx';
+import Link from 'next/link';
+
+export type NavLinkProps = {
+  href: string;
+  label: string;
+  segment?: string | null;
+  withHoverEffect?: boolean;
+};
+
+export const NavLink: FC<NavLinkProps> = ({ href, label, segment = href, withHoverEffect = true }) => {
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const isActive = selectedLayoutSegment === null || selectedLayoutSegment === segment;
+  const classes = clsx(
+    'align-middle text-2xl py-1 font-light text-black',
+    withHoverEffect && 'transition-all hover:underline ease-in-out',
+  );
+
+  return (
+    <Link href={href} className={classes}>
+      {label}
+    </Link>
+  );
+};
