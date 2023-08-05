@@ -14,8 +14,9 @@ export const NavLink: FC<NavLinkProps> = ({ href, label, segment = href, withHov
   const selectedLayoutSegment = useSelectedLayoutSegment();
   const isActive = selectedLayoutSegment === null || selectedLayoutSegment === segment;
   const classes = clsx(
-    'align-middle text-2xl py-1 font-light text-black',
+    'align-middle text-lg py-1 font-semibold text-black decoration-4',
     withHoverEffect && 'transition-all hover:underline ease-in-out',
+    isActive && withHoverEffect && 'transition-all hover:underline ease-in-out'
   );
 
   return (
