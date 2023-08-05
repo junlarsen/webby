@@ -16,7 +16,7 @@ export const NavLink: FC<NavLinkProps> = ({ href, label, segment = href, withHov
   const classes = clsx(
     'align-middle text-lg py-1 font-semibold text-black decoration-4',
     withHoverEffect && 'transition-all hover:underline ease-in-out',
-    isActive && withHoverEffect && 'transition-all hover:underline ease-in-out'
+    isActive && withHoverEffect && 'transition-all hover:underline ease-in-out',
   );
 
   return (
