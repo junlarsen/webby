@@ -27,11 +27,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <meta name="apple-mobile-web-app-status-bar-style" content="white" />
         <link rel="author" href="https://jun.codes" />
         <link rel="publisher" href="https://jun.codes" />
-        <link rel="apple-touch-icon" sizes="120x120" href={new URL('/apple-touch-icon.png', Astro.url)} />
-        <link rel="icon" type="image/png" sizes="32x32" href={new URL('/favicon-32x32.png', Astro.url)} />
-        <link rel="icon" type="image/png" sizes="16x16" href={new URL('/favicon-16x16.png', Astro.url)} />
-        <link rel="icon" type="image/x-icon" href={new URL('/favicon.ico', Astro.url)} />
-        <link rel="manifest" href={new URL('/site.webmanifest', Astro.url)} />
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         <meta name="twitter:dnt" content="on" />
         <meta name="pinterest" content="nopin" />
