@@ -17,7 +17,7 @@ export const hygraphQuery = async (query: string, variables: Record<string, unkn
     },
     body: JSON.stringify({ query, variables }),
     next: {
-      revalidate: 300,
+      revalidate: 5,
     },
   });
   return await response.json();
