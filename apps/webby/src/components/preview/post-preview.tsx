@@ -1,5 +1,3 @@
-'use client';
-
 import { Post } from '@/types/post';
 import { FC } from 'react';
 import { getFormattedDate } from '@/utils/get-formatted-date';
@@ -14,7 +12,7 @@ export type PostPreviewProps = {
 export const PostPreview: FC<PostPreviewProps> = ({ post }) => {
   const time = readingTime(post.content.text);
   return (
-    <div className="border border-black text-left rounded w-full sm:w-1/3 p-2 flex flex-col items-start">
+    <div className="border border-black text-left w-full sm:w-1/3 p-2 flex flex-col items-start">
       <div className="font-noto text-slate-600 inline-flex gap-1">
         <p>{getFormattedDate(post.releaseDate)}</p>•<p>{time.text}</p>
       </div>
