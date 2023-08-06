@@ -1,7 +1,7 @@
 import { hygraphQuery } from '@/queries/query-base';
 import { Job } from '@/types/job';
 
-export const getJobs = async () => {
+export const getJobs = async (): Promise<Job[]> => {
   const result = await hygraphQuery(`
     query Jobs {
       jobs {
@@ -15,5 +15,5 @@ export const getJobs = async () => {
         }
       }
     }`);
-  return result.data.jobs.map((x) => Job.parse(x));
+  return result.data.jobs.map((x: unknown) => Job.parse(x));
 };

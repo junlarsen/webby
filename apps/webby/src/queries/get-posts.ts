@@ -1,10 +1,11 @@
 import { hygraphQuery } from '@/queries/query-base';
 import { Post } from '@/types/post';
 
-export const getRecentPosts = async () => {
-  const result = await hygraphQuery(`
-    query Posts {
-      posts(orderBy: publishedAt_DESC, last: 3) {
+export const getPosts = async (limit = 3): Promise<Post[]> => {
+  const result = await hygraphQuery(
+    `
+    query Posts($limit: Int!) {
+      posts(orderBy: publishedAt_DESC, last: $limit) {
         createdAt
         excerpt
         id
@@ -18,6 +19,8 @@ export const getRecentPosts = async () => {
         title
         updatedAt
       }
-    }`);
-  return result.data.posts.map((x) => Post.parse(x));
+    }`,
+    { limit },
+  );
+  return result.data.posts.map((x: unknown) => Post.parse(x));
 };

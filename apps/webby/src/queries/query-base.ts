@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -9,7 +7,7 @@ declare global {
   }
 }
 
-export const hygraphQuery = async (query: string) => {
+export const hygraphQuery = async (query: string, variables: Record<string, unknown> = {}): Promise<any> => {
   const response = await fetch(process.env.HYGRAPH_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -17,7 +15,10 @@ export const hygraphQuery = async (query: string) => {
       accept: 'application/json',
       authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({ query, variables }),
+    next: {
+      revalidate: 300,
+    },
   });
   return await response.json();
 };

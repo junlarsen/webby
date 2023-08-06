@@ -3,10 +3,16 @@ import { FC, PropsWithChildren } from 'react';
 
 export type HeadingProps = {
   id?: string;
-} & PropsWithChildren
+} & PropsWithChildren;
 
-export const Heading: FC<HeadingProps> = ({ children, id = undefined }) => {
+export const Heading: FC<HeadingProps> = ({ children, id }) => {
   const classes = clsx('font-bold text-2xl font-noto tracking-tighter text-black');
 
-  return <h1 id={id} className={classes}>{children}</h1>;
+  return (
+    <header>
+      <h2 id={id} className={classes}>
+        {children}
+      </h2>
+    </header>
+  );
 };
