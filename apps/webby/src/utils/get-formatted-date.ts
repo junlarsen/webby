@@ -15,7 +15,11 @@ export const getFormattedJobRange = (begin: Date, end?: Date) => {
     year: 'numeric',
   });
   if (end === undefined) {
-    return fmt.formatToParts(begin).concat([{ type: 'era', value: 'Present' }]).map((v) => v.value).join(' ')
+    return fmt
+      .formatToParts(begin)
+      .concat([{ type: 'era', value: 'Present' }])
+      .map((v) => v.value)
+      .join(' ');
   }
 
   return fmt.formatRange(begin, end);

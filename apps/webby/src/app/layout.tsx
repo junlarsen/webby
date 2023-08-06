@@ -18,7 +18,26 @@ export default function RootLayout({ children }: PropsWithChildren) {
   const classes = clsx('min-h-screen flex flex-col', notoSans.className, notoSansJp.className);
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="generator" content="next.js" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+        <link rel="author" href="https://jun.codes" />
+        <link rel="publisher" href="https://jun.codes" />
+        <link rel="apple-touch-icon" sizes="120x120" href={new URL('/apple-touch-icon.png', Astro.url)} />
+        <link rel="icon" type="image/png" sizes="32x32" href={new URL('/favicon-32x32.png', Astro.url)} />
+        <link rel="icon" type="image/png" sizes="16x16" href={new URL('/favicon-16x16.png', Astro.url)} />
+        <link rel="icon" type="image/x-icon" href={new URL('/favicon.ico', Astro.url)} />
+        <link rel="manifest" href={new URL('/site.webmanifest', Astro.url)} />
+
+        <meta name="twitter:dnt" content="on" />
+        <meta name="pinterest" content="nopin" />
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="canonical" href="https://jun.codes" />
+      </head>
       <body className={classes}>
         <Nav />
         <main className="flex-grow">{children}</main>

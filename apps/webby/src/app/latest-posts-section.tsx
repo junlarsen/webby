@@ -26,9 +26,7 @@ export const LatestPostsSection: FC<LatestPostsSectionProps> = ({ posts }) => {
         {posts.map((post) => (
           <PostPreview post={post} key={post.slug} />
         ))}
-        {posts.length === 0 && (
-          <Text>No posts available yet, stay on the lookout for updates!</Text>
-        )}
+        {posts.length === 0 && <Text>No posts available yet, stay on the lookout for updates!</Text>}
       </div>
     </Section>
   );

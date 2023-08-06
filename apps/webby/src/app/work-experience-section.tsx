@@ -27,7 +27,11 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
           in each environment.
         </Text>
 
-        <RadixAccordion.Root defaultValue={[jobs[0].begin.toISOString()]} type="multiple" className="border border-black divide-y divide-black mt-4">
+        <RadixAccordion.Root
+          defaultValue={[jobs[0].begin.toISOString()]}
+          type="multiple"
+          className="border border-black divide-y divide-black mt-4"
+        >
           {jobs.map((job) => (
             <RadixAccordion.Item
               value={job.begin.toISOString()}
