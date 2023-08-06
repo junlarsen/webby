@@ -23,10 +23,11 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
         <Text>
           For the past {difference} years I've worked part-time jobs as well as summer internships as a software
           developer. During this time I've built good teamwork skills and a deep understanding of how software is
-          actually built and maintained.
+          actually built and maintained. Below you will find an overview of my positions, and my highlights and impact
+          in each environment.
         </Text>
 
-        <RadixAccordion.Root type="multiple" className="border border-black divide-y divide-black mt-4">
+        <RadixAccordion.Root defaultValue={[jobs[0].begin.toISOString()]} type="multiple" className="border border-black divide-y divide-black mt-4">
           {jobs.map((job) => (
             <RadixAccordion.Item
               value={job.begin.toISOString()}
@@ -39,16 +40,20 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
                 </div>
                 <div className="text-gray-600 inline-flex gap-2 text-[15px]">
                   {getFormattedJobRange(job.begin, job.end)}
-                  <ChevronDownIcon
-                    className="ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
-                    aria-hidden
-                  />
+                  <div className="text-black">
+                    <ChevronDownIcon
+                      className="text-black ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
+                      aria-hidden
+                    />
+                  </div>
                 </div>
               </RadixAccordion.Trigger>
-              <RadixAccordion.Content className="text-gray-600 p-2 bg-slate-100 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
-                <ul className="list-disc list-inside">
+              <RadixAccordion.Content className="text-gray-600 px-2 pb-2 bg-slate-100 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
+                <ul className="list-disc list-inside text-black">
                   {job.responsibilities.map((responsibility) => (
-                    <li key={responsibility}>{responsibility}</li>
+                    <li key={responsibility}>
+                      <span className="-ml-2 text-gray-600">{responsibility}</span>
+                    </li>
                   ))}
                 </ul>
               </RadixAccordion.Content>

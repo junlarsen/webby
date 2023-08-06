@@ -4,7 +4,7 @@ import { Job } from '@/types/job';
 export const getJobs = async (): Promise<Job[]> => {
   const result = await hygraphQuery(`
     query Jobs {
-      jobs {
+      jobs(orderBy: begin_DESC) {
         companyName
         role
         begin

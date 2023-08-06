@@ -31,7 +31,7 @@ export const IntroductionSection: FC = () => {
             On the server I've worked with TypeScript, Kotlin, Java and PHP. I'm also experienced in deploying
             applications to the cloud using technology like Docker, AWS Lambda, and elastic compute.
           </Text>
-          <Link href="/work">Explore my work →</Link>
+          <Link href="#work">Explore my work →</Link>
         </div>
       </div>
     </Section>
