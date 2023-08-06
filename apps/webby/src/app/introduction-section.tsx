@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Section } from '@/components/section/section';
-import { Title } from '@/components/text/title';
+import { Heading } from '@/components/text/heading';
 import Image from 'next/image';
 import { Text } from '@/components/text/text';
 import { Link } from '@/components/text/link';
@@ -20,7 +20,7 @@ export const IntroductionSection: FC = () => {
           />
         </div>
         <div className="w-full sm:w-3/4">
-          <Title>How did we get here?</Title>
+          <Heading>How did we get here?</Heading>
           <Text>
             Ever since I've was young, I've been fascinated with engineering and technology. During my early childhood I
             was obsessed with Lego bricks, which later turned into a love for Minecraft. A few years down the line I

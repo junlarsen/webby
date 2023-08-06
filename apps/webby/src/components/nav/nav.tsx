@@ -12,7 +12,7 @@ export const Nav: FC = () => {
           <NavLink withHoverEffect={false} href="/" label="٩(◕‿◕｡)۶" />
           <div className="flex flex-row gap-x-4">
             <NavLink href="/blog" label="Blog" />
-            <NavLink href="/work" label="Work" />
+            <NavLink href="/#work" label="Work" />
           </div>
         </div>
       </nav>

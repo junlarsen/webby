@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Post } from '@/types/post';
 import { Section } from '@/components/section/section';
-import { Title } from '@/components/text/title';
+import { Heading } from '@/components/text/heading';
 import { Text } from '@/components/text/text';
 import { Link } from '@/components/text/link';
 import { PostPreview } from '@/components/preview/post-preview';
@@ -13,7 +13,7 @@ export type LatestPostsSectionProps = {
 export const LatestPostsSection: FC<LatestPostsSectionProps> = ({ posts }) => {
   return (
     <Section>
-      <Title>Latest blog posts</Title>
+      <Heading>Latest blog posts</Heading>
       <Text>
         I've always been open about sharing experiences, and I'm a firm believe that the best way to learn is by
         teaching others. This is my blog where I write about topics that interest me. Some keywords you might find

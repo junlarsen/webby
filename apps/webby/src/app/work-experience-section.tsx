@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { Section } from '@/components/section/section';
-import { Title } from '@/components/text/title';
+import { Heading } from '@/components/text/heading';
 import { Text } from '@/components/text/text';
 import { differenceInYears } from 'date-fns';
 import { Job } from '@/types/job';
@@ -19,7 +19,7 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
   return (
     <Section>
       <div className="py-8 sm:py-16">
-        <Title>Work & Career</Title>
+        <Heading id="work">Work & Career</Heading>
         <Text>
           For the past {difference} years I've worked part-time jobs as well as summer internships as a software
           developer. During this time I've built good teamwork skills and a deep understanding of how software is
