@@ -1,3 +1,5 @@
+import { fetch } from 'next/dist/compiled/@edge-runtime/primitives';
+
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -17,7 +19,7 @@ export const hygraphQuery = async (query: string, variables: Record<string, unkn
     },
     body: JSON.stringify({ query, variables }),
     next: {
-      revalidate: 5,
+      revalidate: 300,
     },
   });
   return await response.json();

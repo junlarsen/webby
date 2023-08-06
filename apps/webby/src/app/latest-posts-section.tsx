@@ -5,6 +5,7 @@ import { Heading } from '@/components/text/heading';
 import { Text } from '@/components/text/text';
 import { Link } from '@/components/text/link';
 import { PostPreview } from '@/components/preview/post-preview';
+import { ImageIcon } from '@radix-ui/react-icons';
 
 export type LatestPostsSectionProps = {
   posts: Post[];
