@@ -8,6 +8,8 @@ import { Text } from '@/components/text/text';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { getFormattedDate } from '@/utils/get-formatted-date';
 import { Link } from '@/components/text/link';
+import { HighlightRoot } from '@/app/blog/[slug]/highlight-root';
+import Image from 'next/image';
 
 type PageParams = {
   params: {
@@ -23,7 +25,7 @@ export default async function BlogPost({ params }: PageParams) {
   }
 
   return (
-    <>
+    <article>
       <Callout>
         <Title>{post.title}</Title>
         <Text>
@@ -33,20 +35,52 @@ export default async function BlogPost({ params }: PageParams) {
         </Text>
       </Callout>
       <Section>
-        <RichText
-          renderers={{
-            p: ({ children }) => <Text>{children}</Text>,
-            h1: ({ children }) => <Heading as="h1">{children}</Heading>,
-            h2: ({ children }) => <Heading as="h2">{children}</Heading>,
-            h3: ({ children }) => <Heading as="h3">{children}</Heading>,
-            h4: ({ children }) => <Heading as="h4">{children}</Heading>,
-            h5: ({ children }) => <Heading as="h5">{children}</Heading>,
-            h6: ({ children }) => <Heading as="h6">{children}</Heading>,
-            a: ({ children, href }) => <Link href={href ?? '#'}>{children}</Link>,
-          }}
-          content={post.content.raw}
-        />
+        <div className="flex flex-col gap-8">
+          <RichText
+            renderers={{
+              p: ({ children }) => <Text>{children}</Text>,
+              h1: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h1">{children}</Heading>
+                </div>
+              ),
+              h2: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h2">{children}</Heading>
+                </div>
+              ),
+              h3: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h3">{children}</Heading>
+                </div>
+              ),
+              h4: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h4">{children}</Heading>
+                </div>
+              ),
+              h5: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h5">{children}</Heading>
+                </div>
+              ),
+              h6: ({ children }) => (
+                <div className="-mb-8">
+                  <Heading as="h6">{children}</Heading>
+                </div>
+              ),
+              code_block: ({ children }) => (
+                <pre className="border border-black">
+                  <code className="line-numbers language-tsx">{children}</code>
+                </pre>
+              ),
+              a: ({ children, href }) => <Link href={href ?? '#'}>{children}</Link>,
+            }}
+            content={post.content.raw}
+          />
+        </div>
       </Section>
-    </>
+      <HighlightRoot />
+    </article>
   );
 }

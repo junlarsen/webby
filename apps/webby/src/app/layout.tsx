@@ -1,4 +1,5 @@
 import './globals.css';
+import 'highlight.js/styles/github.css';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP as NotoSansJp, Noto_Sans as NotoSans } from 'next/font/google';
 import { PropsWithChildren } from 'react';
