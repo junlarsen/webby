@@ -9,6 +9,10 @@ export type BearerToken = string;
 export class RateLimitExceeded extends Error {
   public constructor(public readonly retryIn: number) {
     super(`rate limit exceeded, wait ${retryIn}ms before continuing`);
+
+    if (typeof window !== 'undefined') {
+      window.alert(`rate limit exceeded, please wait ${(retryIn / 1000).toFixed(2)} seconds`);
+    }
   }
 }
 
@@ -59,6 +63,7 @@ export const createReview = (assignment: number, subject: number, state: 'correc
         subject_id: subject,
         incorrect_meaning_answers: state === 'correct' ? 0 : 1,
         incorrect_reading_answers: state === 'correct' ? 0 : 1,
+        created_at: new Date(),
       },
     }),
   });
@@ -80,9 +85,9 @@ export type WordType =
   | 'な adjective'
   | 'い adjective';
 
-export type ApiObject<S> = {
+export type ApiObject<S, T = string> = {
   id: number;
-  object: string;
+  object: T;
   url: string;
   data_updated_at: Date;
   data: S;

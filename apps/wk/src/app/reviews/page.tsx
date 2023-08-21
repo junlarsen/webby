@@ -16,7 +16,7 @@ export default async function ReviewsPage() {
   }
 
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <div className="flex gap-2 justify-between h-[26px]">
         <h1>
           {userJson.data.username} &mdash; level {userJson.data.level}

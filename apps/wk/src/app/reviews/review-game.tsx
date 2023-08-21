@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from 'react';
-import { BearerToken, createReview } from '@/utils/wk';
+import { FC, useEffect, useMemo } from 'react';
+import { BearerToken } from '@/utils/wk';
 import { useMachine } from '@xstate/react';
 import * as Mousetrap from 'mousetrap';
 import { QuizView } from '@/app/reviews/quiz-view';
@@ -9,11 +9,12 @@ import { RevisitView } from '@/app/reviews/revisit-view';
 import { assign, createMachine } from 'xstate';
 import { useGameContext } from '@/app/reviews/game-context';
 import { useCreateReviews } from '@/utils/use-reviews';
+import { IndicatorBar } from '@/components/indicator-bar';
 
 type ReviewGameProps = { token: BearerToken };
 
 export const ReviewGame: FC<ReviewGameProps> = ({ token }) => {
-  const { assignments } = useGameContext();
+  const { assignments, subjects } = useGameContext();
   const router = useRouter();
   const { mutate: createReview } = useCreateReviews(token);
 
@@ -86,7 +87,7 @@ export const ReviewGame: FC<ReviewGameProps> = ({ token }) => {
                 context.assignments[context.index].data.subject_id,
                 'incorrect',
               ]);
-              if (context.index >= /* context.assignments!.length */ 5) {
+              if (context.index >= context.assignments.length) {
                 send('F');
                 return context.index;
               }
@@ -100,8 +101,8 @@ export const ReviewGame: FC<ReviewGameProps> = ({ token }) => {
 
   useEffect(() => {
     Mousetrap.bind('space', () => void send('SPACE'));
-    Mousetrap.bind('1', () => void send('TWO'));
-    Mousetrap.bind('2', () => void send('ONE'));
+    Mousetrap.bind('1', () => void send('ONE'));
+    Mousetrap.bind('2', () => void send('TWO'));
     Mousetrap.bind('z', () => void send('Z'));
     Mousetrap.bind('f', () => void send('F'));
 
@@ -113,16 +114,35 @@ export const ReviewGame: FC<ReviewGameProps> = ({ token }) => {
       router.push('/completed');
     }
   }, [state.value]);
+  const assignment = state.context.assignments[state.context.index];
+  const subject = useMemo(() => {
+    return subjects.find((subject) => subject.id === assignment.data.subject_id)!;
+  }, [subjects, assignment]);
 
-  switch (state.value) {
-    case 'start':
-    case 'review':
-      return <QuizView assignment={state.context.assignments[state.context.index]} />;
-    case 'show':
-      return <ShowView assignment={state.context.assignments[state.context.index]} />;
-    case 'revisit':
-      return <RevisitView assignment={state.context.assignments[state.context.index]} />;
-    default:
-      return <h1>Current state is {JSON.stringify(state.value)}</h1>;
-  }
+  return (
+    <>
+      <IndicatorBar subject={subject} />
+      <button onClick={() => send('SPACE')} className="flex-grow w-full text-center">
+        {state.value === 'start' || state.value === 'review' ? (
+          <QuizView subject={subject} />
+        ) : state.value === 'show' ? (
+          <ShowView subject={subject} />
+        ) : state.value === 'revisit' ? (
+          // TODO: implement this fully
+          <RevisitView subject={subject} />
+        ) : null}
+      </button>
+
+      {state.value === 'show' && (
+        <div className="w-full flex text-center border-t border-black divide-x divide-black">
+          <button onClick={() => send('ONE')} className="w-1/2 p-4">
+            Correct (1)
+          </button>
+          <button onClick={() => send('TWO')} className="w-1/2 p-4">
+            Incorrect (2)
+          </button>
+        </div>
+      )}
+    </>
+  );
 };

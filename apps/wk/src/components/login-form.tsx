@@ -22,7 +22,7 @@ export const LoginForm: FC = () => {
             type="text"
             required
             name="token"
-            placeholder="wk api token"
+            placeholder="wanikani api token"
           />
         </div>
       </div>

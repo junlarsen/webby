@@ -1,23 +1,26 @@
 import type { ApiObject, WordType } from '@/utils/wk';
 
-export type Vocabulary = ApiObject<{
-  created_at: Date;
-  level: number;
-  slug: string;
-  hidden_at: Date;
-  document_url: string;
-  characters: string;
-  meanings: VocabularyMeaning[];
-  readings: VocabularyReading[];
-  parts_of_speech: WordType[];
-  component_subject_ids: number[];
-  meaning_mnemonic: string;
-  reading_mnemonic: string;
-  context_sentences: ContextSentence[];
-  pronunciation_audios: PronunciationAudio[];
-  lesson_position: number;
-  spaced_repetition_system_id: number;
-}>;
+export type Vocabulary = ApiObject<
+  {
+    created_at: Date;
+    level: number;
+    slug: string;
+    hidden_at: Date;
+    document_url: string;
+    characters: string;
+    meanings: VocabularyMeaning[];
+    readings: VocabularyReading[];
+    parts_of_speech: WordType[];
+    component_subject_ids: number[];
+    meaning_mnemonic: string;
+    reading_mnemonic: string;
+    context_sentences: ContextSentence[];
+    pronunciation_audios: PronunciationAudio[];
+    lesson_position: number;
+    spaced_repetition_system_id: number;
+  },
+  'vocabulary'
+>;
 
 export interface ContextSentence {
   en: string;

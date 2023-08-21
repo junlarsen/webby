@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const classes = clsx(notoSans.className, notoSansJp.className, 'max-w-4xl mx-auto p-3');
+  const classes = clsx(notoSans.className, notoSansJp.className, 'max-w-4xl mx-auto');
   return (
     <html lang="en">
       <RecoilProvider>
