@@ -1,27 +1,57 @@
 'use client';
 
 import { FC, useEffect } from 'react';
-import { createReviewMachine } from '@/utils/fsm';
-import { useMachine } from '@xstate/react';
-import * as Mousetrap from 'mousetrap';
-import { BearerToken } from '@/utils/wk';
+import { BearerToken, RateLimitExceeded } from '@/utils/wk';
 import { useSubjects } from '@/utils/use-subjects';
+import { useSetRecoilState } from 'recoil';
+import { subjectsAtom } from '@/app/reviews/subject-atom';
+import { reviewsAtom } from '@/app/reviews/reviews-atom';
+import { useReviews } from '@/utils/use-reviews';
+import { Text } from '@/components/text';
+import { ReviewGame } from '@/app/reviews/review-game';
+import { GameContextProvider } from '@/app/reviews/game-context';
 
 export const Review: FC<{ token: BearerToken }> = ({ token }) => {
-  const [state, send] = useMachine(createReviewMachine);
-  // const { data } = useSubjects(token);
-  //
-  // console.log(data)
+  const {
+    hasNextPage: isSubjectFetching,
+    isLoading: isSubjectLoading,
+    result: subjects,
+    failureReason: subjectFailureReason,
+  } = useSubjects(token);
+  const {
+    hasNextPage: isReviewFetching,
+    isLoading: isReviewLoading,
+    result: reviews,
+    failureReason: reviewFailureReason,
+  } = useReviews(token);
+  const setSubjects = useSetRecoilState(subjectsAtom);
+  const setReviews = useSetRecoilState(reviewsAtom);
 
   useEffect(() => {
-    Mousetrap.bind('space', () => void send('SPACE'));
-    Mousetrap.bind('1', () => void send('TWO'));
-    Mousetrap.bind('2', () => void send('ONE'));
-    Mousetrap.bind('z', () => void send('Z'));
-    Mousetrap.bind('f', () => void send('F'));
+    if (!isSubjectFetching && !isSubjectLoading) {
+      setSubjects(subjects);
+    }
+  }, [subjects, isSubjectFetching, isSubjectLoading]);
 
-    return () => void Mousetrap.reset();
-  }, [state.value, send]);
+  useEffect(() => {
+    if (!isReviewFetching && !isReviewLoading) {
+      setReviews(reviews);
+    }
+  }, [reviews, isReviewFetching, isReviewLoading]);
 
-  return <h1>Current state is {JSON.stringify(state.value)}</h1>;
+  return (
+    <>
+      {isReviewFetching || isSubjectFetching || subjects === null || reviews === null ? (
+        <Text>
+          fetching subject data{' '}
+          {subjectFailureReason instanceof RateLimitExceeded ||
+            (reviewFailureReason instanceof RateLimitExceeded && 'waiting: rate limit exceeded')}
+        </Text>
+      ) : (
+        <GameContextProvider subjects={subjects} assignments={reviews}>
+          <ReviewGame token={token} />
+        </GameContextProvider>
+      )}
+    </>
+  );
 };

@@ -4,6 +4,7 @@ import { Noto_Sans as NotoSans, Noto_Sans_JP as NotoSansJp } from 'next/font/goo
 import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
 import { QueryProvider } from '@/app/query-provider';
+import { RecoilProvider } from '@/app/recoil-provider';
 
 const notoSans = NotoSans({ weight: ['300', '400', '600', '700'], subsets: ['latin'] });
 const notoSansJp = NotoSansJp({ weight: ['300', '400', '600', '700'], subsets: ['latin'] });
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
   const classes = clsx(notoSans.className, notoSansJp.className, 'max-w-4xl mx-auto p-3');
   return (
     <html lang="en">
-      <QueryProvider>
-        <body className={classes}>{children}</body>
-      </QueryProvider>
+      <RecoilProvider>
+        <QueryProvider>
+          <body className={classes}>{children}</body>
+        </QueryProvider>
+      </RecoilProvider>
     </html>
   );
 }
