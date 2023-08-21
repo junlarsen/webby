@@ -1,5 +1,9 @@
 import { FC } from 'react';
 import { Subject } from '@/utils/wk';
+import { Vocabulary } from '@/utils/types/wk-vocabulary';
+import { KanaVocabulary } from '@/utils/types/wk-kana-vocabulary';
+import { Radical } from '@/utils/types/wk-radical';
+import { Kanji } from '@/utils/types/wk-kanji';
 
 type ShowViewProps = {
   subject: Subject;
@@ -8,17 +12,17 @@ type ShowViewProps = {
 export const ShowView: FC<ShowViewProps> = (props) => {
   switch (props.subject.object) {
     case 'vocabulary':
-      return <VocabularyShowView {...props} />;
+      return <VocabularyShowView subject={props.subject} />;
     case 'kana_vocabulary':
-      return <KanaVocabularyShowView {...props} />;
+      return <KanaVocabularyShowView subject={props.subject} />;
     case 'radical':
-      return <RadicalShowView {...props} />;
+      return <RadicalShowView subject={props.subject} />;
     case 'kanji':
-      return <KanjiShowView {...props} />;
+      return <KanjiShowView subject={props.subject} />;
   }
 };
 
-const VocabularyShowView: FC<ShowViewProps> = ({ subject }) => {
+const VocabularyShowView: FC<{ subject: Vocabulary }> = ({ subject }) => {
   return (
     <>
       <p>{subject.data.meanings.find((meaning) => meaning.primary)!.meaning}</p>
@@ -27,7 +31,7 @@ const VocabularyShowView: FC<ShowViewProps> = ({ subject }) => {
   );
 };
 
-const KanaVocabularyShowView: FC<ShowViewProps> = ({ subject }) => {
+const KanaVocabularyShowView: FC<{ subject: KanaVocabulary }> = ({ subject }) => {
   return (
     <>
       <>
@@ -38,7 +42,7 @@ const KanaVocabularyShowView: FC<ShowViewProps> = ({ subject }) => {
   );
 };
 
-const RadicalShowView: FC<ShowViewProps> = ({ subject }) => {
+const RadicalShowView: FC<{ subject: Radical }> = ({ subject }) => {
   return (
     <>
       <p>{subject.data.meanings.map((meaning) => meaning.meaning).join(', ')}</p>
@@ -46,7 +50,7 @@ const RadicalShowView: FC<ShowViewProps> = ({ subject }) => {
   );
 };
 
-const KanjiShowView: FC<ShowViewProps> = ({ subject }) => {
+const KanjiShowView: FC<{ subject: Kanji }> = ({ subject }) => {
   return (
     <>
       <p>{subject.data.meanings.map((meaning) => meaning.meaning).join(', ')}</p>
