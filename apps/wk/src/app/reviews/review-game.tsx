@@ -73,7 +73,7 @@ export const ReviewGame: FC<ReviewGameProps> = ({ token }) => {
                 context.assignments[context.index].data.subject_id,
                 'correct',
               ]);
-              if (context.index >= /* context.assignments!.length */ 5) {
+              if (context.index >= context.assignments.length) {
                 send('F');
                 return context.index;
               }
