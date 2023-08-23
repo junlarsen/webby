@@ -1,4 +1,3 @@
-import { getPostBySlug } from '@/queries/get-post-by-slug';
 import { notFound } from 'next/navigation';
 import { Section } from '@/components/section/section';
 import { Heading } from '@/components/text/heading';
@@ -6,9 +5,9 @@ import { Callout } from '@/components/section/callout';
 import { Title } from '@/components/text/title';
 import { Text } from '@/components/text/text';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { getFormattedDate } from '@/utils/get-formatted-date';
 import { Link } from '@/components/text/link';
 import { HighlightRoot } from '@/app/blog/[slug]/highlight-root';
+import { getSubjectBySlug } from '@/queries/get-subject-by-slug';
 
 type PageParams = {
   params: {
@@ -17,21 +16,20 @@ type PageParams = {
 };
 
 export default async function BlogPost({ params }: PageParams) {
-  const post = await getPostBySlug(params.slug);
+  const subject = await getSubjectBySlug(params.slug);
 
-  if (post === null) {
+  if (subject === null) {
     return notFound();
   }
 
   return (
     <article>
       <Callout>
-        <Title>{post.title}</Title>
-        <Text>
-          <span className="text-sm text-gray-600 font-semibold">Published on {getFormattedDate(post.releaseDate)}</span>
-          <br />
-          {post.excerpt}
-        </Text>
+        <Title>{subject.subjectName}</Title>
+        <div>
+          <Text>Tatt {subject.semester}</Text>
+          <Link href={`https://www.ntnu.no/studier/emner/${subject.slug.toUpperCase()}`}>Emneinformasjon</Link>
+        </div>
       </Callout>
       <Section>
         <div className="flex flex-col gap-8">
@@ -75,7 +73,7 @@ export default async function BlogPost({ params }: PageParams) {
               ),
               a: ({ children, href }) => <Link href={href ?? '#'}>{children}</Link>,
             }}
-            content={post.content.raw}
+            content={subject.body.raw}
           />
         </div>
       </Section>
