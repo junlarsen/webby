@@ -20,7 +20,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project     = "webby"
+      Project = "webby"
     }
   }
 }
@@ -31,7 +31,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project     = "webby"
+      Project = "webby"
     }
   }
 }
