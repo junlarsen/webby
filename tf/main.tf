@@ -2,6 +2,10 @@ data "aws_route53_zone" "jun_codes" {
   name = "jun.codes"
 }
 
+resource "aws_cloudfront_origin_access_identity" "cloudfront_access" {
+  comment = "cloudfront access"
+}
+
 resource "aws_s3_bucket" "jun_codes" {
   bucket = "m.jun.codes"
 }
@@ -17,20 +21,27 @@ resource "aws_s3_bucket_cors_configuration" "jun_codes" {
   }
 }
 
+data "aws_iam_policy_document" "cloudfront_read_access" {
+  version = "2008-10-17"
+  statement {
+    sid = "AllowCloudFrontReadOnly"
+    effect = "Allow"
+    principals {
+      type = "AWS"
+      identifiers = [
+        aws_cloudfront_origin_access_identity.cloudfront_access.iam_arn
+      ]
+    }
+    actions = ["s3:GetObject"]
+    resources = [
+      "${aws_s3_bucket.jun_codes.arn}/*"
+    ]
+  }
+}
+
 resource "aws_s3_bucket_policy" "jun_codes" {
   bucket = aws_s3_bucket.jun_codes.id
-  policy = <<EOF
-    {
-      "Version":"2008-10-17",
-      "Statement":[{
-        "Sid":"AllowPublicRead",
-        "Effect":"Allow",
-        "Principal": {"AWS": "*"},
-        "Action":["s3:GetObject"],
-        "Resource":["arn:aws:s3:::m.jun.codes/*"]
-      }]
-    }
-  EOF
+  policy = data.aws_iam_policy_document.cloudfront_read_access.json
 }
 
 resource "aws_s3_bucket_website_configuration" "jun_codes" {
@@ -45,16 +56,23 @@ resource "aws_s3_bucket_website_configuration" "jun_codes" {
   }
 }
 
-resource "aws_s3_bucket_acl" "jun_codes" {
+resource "aws_s3_bucket_public_access_block" "jun_codes" {
   bucket = aws_s3_bucket.jun_codes.id
 
-  acl = "public-read"
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = false
 }
 
 resource "aws_cloudfront_distribution" "jun_codes" {
   origin {
     domain_name = "m.jun.codes.s3.amazonaws.com"
     origin_id   = "m.jun.codes"
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.cloudfront_access.cloudfront_access_identity_path
+    }
   }
 
   enabled         = true
@@ -82,6 +100,7 @@ resource "aws_cloudfront_distribution" "jun_codes" {
     min_ttl                = 86400
     default_ttl            = 86400
     max_ttl                = 86400 * 7
+    compress = true
   }
 
   restrictions {
