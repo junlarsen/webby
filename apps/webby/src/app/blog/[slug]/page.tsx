@@ -4,10 +4,9 @@ import { Section } from '@/components/section/section';
 import { Callout } from '@/components/section/callout';
 import { Title } from '@/components/text/title';
 import { Text } from '@/components/text/text';
-import { RichText } from '@graphcms/rich-text-react-renderer';
 import { getFormattedDate } from '@/utils/get-formatted-date';
-import clsx from 'clsx';
 import { Metadata } from 'next';
+import { Prose } from '@/components/text/prose';
 
 type PageParams = {
   params: {
@@ -31,7 +30,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
       url: `https://jun.codes/blog/${post.slug}`,
       countryName: 'Norway',
       locale: 'en-US',
-      authors: [new URL('https://jun.codes')]
+      authors: [new URL('https://jun.codes')],
     },
   };
 }
@@ -43,14 +42,6 @@ export default async function BlogPost({ params }: PageParams) {
     return notFound();
   }
 
-  const classes = clsx(
-    'max-w-3xl',
-    'prose prose-gray',
-    'prose-h2:text-black prose-h2:font-bold prose-h2:font-noto prose-h2:tracking-tighter prose-h2:text-2xl',
-    'prose-p:leading-8 prose-p:text-gray-600',
-    'prose-a:font-semibold prose-a:hover:underline prose-a:decoration-1 prose-a:mt-3 prose-a:text-lg prose-a:leading-8 prose-a:text-black',
-  );
-
   return (
     <article>
       <Callout>
@@ -61,9 +52,7 @@ export default async function BlogPost({ params }: PageParams) {
         </Text>
       </Callout>
       <Section>
-        <div className={classes}>
-          <RichText content={post.content.raw} />
-        </div>
+        <Prose content={post.content.raw} />
       </Section>
     </article>
   );
