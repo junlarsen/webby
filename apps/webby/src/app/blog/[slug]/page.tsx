@@ -31,11 +31,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
       url: `https://jun.codes/blog/${post.slug}`,
       countryName: 'Norway',
       locale: 'en-US',
-
-      firstName: 'Mats Jun',
-      lastName: 'Larsen',
-      gender: 'male',
-      username: 'jun_ok',
+      authors: [new URL('https://jun.codes')]
     },
   };
 }
