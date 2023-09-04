@@ -10,7 +10,7 @@ export const CalloutSection: FC = () => {
     <Callout>
       <Title>
         Software Developer, Student,
-        <br /> Open-sourcerer, and boulderer
+        <br /> Open-sourcerer, and home cook
       </Title>
       <Text>
         I'm Mats, a software developer, student, and coffee addict that's based in Trondheim, Norway with a passion to

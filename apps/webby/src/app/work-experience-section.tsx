@@ -52,7 +52,7 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
                   </div>
                 </div>
               </RadixAccordion.Trigger>
-              <RadixAccordion.Content className="text-gray-600 px-2 pb-2 bg-slate-100 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
+              <RadixAccordion.Content className="text-gray-600 p-4 bg-slate-100 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
                 <ul className="list-disc list-inside text-black">
                   {job.responsibilities.map((responsibility) => (
                     <li key={responsibility}>
