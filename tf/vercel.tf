@@ -14,7 +14,7 @@ resource "vercel_project" "wk" {
 
 resource "vercel_project_domain" "wk_jun_codes" {
   domain     = aws_route53_record.wk_jun_codes_cname.name
-  project_id = vercel_project.webby.id
+  project_id = vercel_project.wk.id
 }
 
 resource "vercel_project" "webby" {
