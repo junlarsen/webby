@@ -1,8 +1,12 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
-import { RichText } from '@graphcms/rich-text-react-renderer';
+import { RichText, RichTextProps } from '@graphcms/rich-text-react-renderer';
 
-export const Prose: FC<{ content: string }> = ({ content }) => {
+export type ProseProps = {
+  content: RichTextProps['content'];
+};
+
+export const Prose: FC<ProseProps> = ({ content }) => {
   const classes = clsx(
     'max-w-3xl',
     'prose prose-gray',
