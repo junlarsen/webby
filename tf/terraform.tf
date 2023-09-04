@@ -12,6 +12,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+
+    vercel = {
+      source  = "vercel/vercel"
+      version = "~> 0.4"
+    }
   }
 }
 
@@ -35,3 +40,5 @@ provider "aws" {
     }
   }
 }
+
+provider "vercel" {}

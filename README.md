@@ -23,6 +23,7 @@ Everything is managed through Terraform.
 - HYGRAPH_TOKEN: hygraph fetching access token for content layer
 - HYGRAPH_ENDPOINT: hygraph graphql api endpoint
 - WEBHOOK_URL: eventbridge cost explorer notifier discord webhook
+- VERCEL_API_TOKEN: vercel api token for terraform deployment
 
 ## Support
 
