@@ -24,7 +24,7 @@ resource "aws_s3_bucket_cors_configuration" "jun_codes" {
 data "aws_iam_policy_document" "cloudfront_read_access" {
   version = "2008-10-17"
   statement {
-    sid = "AllowCloudFrontReadOnly"
+    sid    = "AllowCloudFrontReadOnly"
     effect = "Allow"
     principals {
       type = "AWS"
@@ -100,7 +100,7 @@ resource "aws_cloudfront_distribution" "jun_codes" {
     min_ttl                = 86400
     default_ttl            = 86400
     max_ttl                = 86400 * 7
-    compress = true
+    compress               = true
   }
 
   restrictions {

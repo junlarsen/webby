@@ -9,6 +9,10 @@
       "dependsOn": ["^dev"],
       "outputs": ["dist/**"],
       "cache": false
+    },
+    "docker:dev": {},
+    "docker:push": {
+      "dependsOn": ["^docker:dev"]
     }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "@webby/fundwatcher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "docker run -p 9000:8080 -e WEBHOOK_URL fundwatcher:latest",
+    "build": "tsup src/lambda.ts && echo '{\"type\":\"module\"}' > dist/package.json",
+    "docker:dev": "docker build --platform linux/amd64 -t fundwatcher:latest -f Dockerfile ../..",
+    "docker:push": "docker tag fundwatcher:latest 351022664525.dkr.ecr.eu-north-1.amazonaws.com/fundwatcher:latest && docker push 351022664525.dkr.ecr.eu-north-1.amazonaws.com/fundwatcher:latest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cost-explorer": "^3.405.0",
+    "discord.js": "^14.13.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "@types/node": "20.4.7",
+    "typescript": "5.1.6",
+    "tsup": "^7.2.0"
+  }
+}

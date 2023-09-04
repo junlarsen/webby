@@ -1,5 +1,5 @@
 {
-  "name": "wk",
+  "name": "@webby/wk",
   "version": "0.1.0",
   "private": true,
   "scripts": {
