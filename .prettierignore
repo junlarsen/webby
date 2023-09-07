@@ -1,6 +1,7 @@
 .next
 .idea
 .env
+.terraform
 
 node_modules
 dist

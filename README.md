@@ -24,6 +24,12 @@ Everything is managed through Terraform.
 - HYGRAPH_ENDPOINT: hygraph graphql api endpoint
 - WEBHOOK_URL: eventbridge cost explorer notifier discord webhook
 - VERCEL_API_TOKEN: vercel api token for terraform deployment
+- GOOGLE_CLIENT_ID: aws cognito google provider client id
+- GOOGLE_CLIENT_SECRET: aws cognito google provider client secret
+- ONCE_COGNITO_CLIENT_ID: cognito client id for once app
+- ONCE_COGNITO_CLIENT_SECRET: cognito client secret for once app
+- ONCE_COGNITO_ISSUER: cognito issuer for once app
+- NEXTAUTH_SECRET: byte-string for next auth signing
 
 ## Support
 
