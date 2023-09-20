@@ -18,8 +18,8 @@ resource "vercel_project_domain" "wk_jun_codes" {
 }
 
 resource "vercel_project" "webby" {
-  name      = "webby"
-  framework = "nextjs"
+  name      = "webmix"
+  framework = "remix"
 
   git_repository = {
     production_branch = "main"
@@ -28,7 +28,7 @@ resource "vercel_project" "webby" {
   }
 
   build_command  = "cd ../.. &&  pnpm build:webby"
-  root_directory = "apps/webby"
+  root_directory = "apps/webmix"
 }
 
 resource "vercel_project_environment_variable" "webby_hygraph_token" {

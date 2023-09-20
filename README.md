@@ -4,13 +4,15 @@ Monorepo for all applications and infrastructure that runs at https://jun.codes
 
 **Consists of the following components:**
 
-- webby: my personal website
+- webmix: my personal website, remix.run app
 - fundwatcher: automated lambda to notify me of AWS expenses daily
 - wk: a speedy, mobile friendly wanikani review application
+- once: a one-time password sharing application
 
 **Infrastructure**
 
 - Next.js applications are deployed to Vercel.
+- Remix applications are also deployed to Vercel.
 - Static content is uploaded and served through AWS S3 and Cloudfront
 - Automation infrastructure deployed on AWS Lambda and EventBridge
 
