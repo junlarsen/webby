@@ -8,7 +8,7 @@ resource "vercel_project" "wk" {
     repo              = "matsjla/webby"
   }
 
-  build_command  = "cd ../.. &&  pnpm build:wk"
+  build_command  = "cd ../.. && pnpm build:wk"
   root_directory = "apps/wk"
 }
 
@@ -27,7 +27,7 @@ resource "vercel_project" "webby" {
     repo              = "matsjla/webby"
   }
 
-  build_command  = "cd ../.. &&  pnpm build:webby"
+  build_command  = "cd ../.. && pnpm build:webmix"
   root_directory = "apps/webmix"
 }
 
