@@ -16,7 +16,7 @@ export const CalloutSection: FC = () => {
         tech consultant at Kodeworks.
       </Text>
       <div className="flex gap-3">
-        <a href="https://github.com/matsjla">
+        <a href="https://github.com/junlarsen">
           <img src="/assets/github.svg" alt="GitHub logo mark" height={24} width={24} />
         </a>
         <a href="https://linkedin.com/in/mats-jun-larsen">

@@ -5,7 +5,7 @@ resource "vercel_project" "wk" {
   git_repository = {
     production_branch = "main"
     type              = "github"
-    repo              = "matsjla/webby"
+    repo              = "junlarsen/webby"
   }
 
   build_command  = "cd ../.. && pnpm build:wk"
@@ -24,7 +24,7 @@ resource "vercel_project" "webby" {
   git_repository = {
     production_branch = "main"
     type              = "github"
-    repo              = "matsjla/webby"
+    repo              = "junlarsen/webby"
   }
 
   build_command  = "cd ../.. && pnpm build:webmix"
