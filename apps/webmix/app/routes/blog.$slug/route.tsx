@@ -9,7 +9,7 @@ import { Section } from '~/components/section/section';
 import { Prose } from '~/components/text/prose';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  const post = data!
+  const post = data!;
   return [
     { title: `${post.title} | Jun.codes` },
     { name: 'description', content: post.excerpt },

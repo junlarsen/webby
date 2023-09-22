@@ -7,6 +7,8 @@ import { LatestPostsSection } from '~/routes/_index/latest-posts-section';
 import { WorkExperienceSection } from '~/routes/_index/work-experience-section';
 import { useLoaderData } from '@remix-run/react';
 import { json } from '@remix-run/node';
+import { ProjectOverviewSection } from '~/routes/_index/project-overview-section';
+import { getProjects } from '~/queries/get-projects';
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,16 +37,18 @@ export const meta: MetaFunction = () => {
 export const loader = async () => {
   const posts = await getPosts();
   const jobs = await getJobs();
+  const projects = await getProjects();
 
-  return json({ posts, jobs });
+  return json({ posts, jobs, projects });
 };
 
 export default function Index() {
-  const { posts, jobs } = useLoaderData<typeof loader>();
+  const { posts, jobs, projects } = useLoaderData<typeof loader>();
   return (
     <>
       <CalloutSection />
       <IntroductionSection />
+      <ProjectOverviewSection projects={projects} />
       <LatestPostsSection posts={posts} />
       <WorkExperienceSection jobs={jobs} />
     </>

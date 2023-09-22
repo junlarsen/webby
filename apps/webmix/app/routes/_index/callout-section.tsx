@@ -8,11 +8,11 @@ export const CalloutSection: FC = () => {
     <Callout>
       <Title>
         Software Developer, Student,
-        <br /> Open-sourcerer, and home cook
+        <br /> Open-sourcerer, and boulderer
       </Title>
       <Text>
-        I'm Mats, a software developer, student, and coffee addict that's based in Trondheim, Norway with a passion to
-        build solutions people love. I'm currently completing my degree in computer science at NTNU, while working as a
+        I'm Mats Jun, a software developer, and student based in Trondheim, Norway with a passion to build solutions
+        people love to use. I'm in the process of completing my degree in computer science at NTNU, while working as a
         tech consultant at Kodeworks.
       </Text>
       <div className="flex gap-3">

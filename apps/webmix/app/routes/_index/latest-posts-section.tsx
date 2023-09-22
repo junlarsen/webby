@@ -13,11 +13,11 @@ export type LatestPostsSectionProps = {
 export const LatestPostsSection: FC<LatestPostsSectionProps> = ({ posts }) => {
   return (
     <Section>
-      <Heading>Latest blog posts</Heading>
+      <Heading>Latest in writing</Heading>
       <Text>
-        I've always been open about sharing experiences, and I'm a firm believe that the best way to learn is by
-        teaching others. This is my blog where I write about topics that interest me. Some keywords you might find
-        interesting are Linux, Open source, cooking and the Japanese language.
+        I've always been open about sharing experiences, and I firmly believe that the best way to learn is by teaching.
+        This is my small blog where I write about topics that interest me. Some keywords you might find interesting are
+        Linux, Cloud, Open source software, cooking, and bouldering.
       </Text>
       <Link to="/blog">View all posts →</Link>
 

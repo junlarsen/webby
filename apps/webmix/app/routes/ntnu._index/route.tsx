@@ -33,8 +33,7 @@ export default function Page() {
         <Heading>Emner</Heading>
 
         <div className="flex flex-col sm:flex-row mt-4 gap-4">
-          {
-            subjects.map((subject) => (
+          {subjects.map((subject) => (
             <SubjectPreview subject={subject} key={subject.slug} />
           ))}
         </div>

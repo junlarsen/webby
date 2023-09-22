@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        noto: ['"Noto Sans JP"', '"Noto Sans"', 'system-ui', 'sans-serif']
-      }
+        noto: ['"Noto Sans JP"', '"Noto Sans"', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

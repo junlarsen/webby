@@ -17,12 +17,12 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
   return (
     <Section>
       <div className="py-8 sm:py-16">
-        <Heading id="work">Work & Career</Heading>
+        <Heading id="work">Things I've done</Heading>
         <Text>
-          For the past {difference} years I've worked part-time jobs as well as summer internships as a software
-          developer. During this time I've built good teamwork skills and a deep understanding of how software is
-          actually built and maintained. Below you will find an overview of my positions, and my highlights and impact
-          in each environment.
+          For the past {difference} years I've had multiple jobs and internships in software development and tech
+          consultancy. During this time I've built an impressive skillset, excellent teamwork skills, and a deep
+          understanding of how software is built and maintained. Below you will find an overview of my positions, and my
+          highlights and impact.
         </Text>
 
         <RadixAccordion.Root
