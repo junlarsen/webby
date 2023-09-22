@@ -38,7 +38,7 @@ export const ProjectPreview: FC<ProjectPreviewProps> = ({ project }) => {
       </div>
 
       <Link className="ml-[40px] mt-auto" to={`https://github.com/${project.repository}`}>
-        Read →
+        Visit repository →
       </Link>
     </div>
   );

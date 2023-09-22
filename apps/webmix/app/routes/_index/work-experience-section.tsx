@@ -41,7 +41,7 @@ export const WorkExperienceSection: FC<WorkExperienceSectionProps> = ({ jobs }) 
                   {job.role} at {job.companyName}
                 </div>
                 <div className="text-gray-600 inline-flex gap-2 text-[15px]">
-                  {getFormattedJobRange(new Date(job.begin), new Date(job.end ?? new Date()))}
+                  {getFormattedJobRange(new Date(job.begin), job.end ? new Date(job.end) : null)}
                   <div className="text-black">
                     <ChevronDownIcon
                       className="text-black ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
