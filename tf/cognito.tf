@@ -45,5 +45,5 @@ resource "aws_cognito_user_pool_client" "once" {
   allowed_oauth_scopes                 = ["email", "openid", "profile"]
 
   generate_secret = true
-  callback_urls = ["http://localhost:3001/api/auth/callback/cognito"]
+  callback_urls   = ["http://localhost:3001/api/auth/callback/cognito"]
 }
