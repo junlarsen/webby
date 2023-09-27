@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "webhook_url" {
-  name = "fundwatcher/webhook-url"
+  name = "webby/fundwatcher/webhook-url"
 }
 
 data "aws_secretsmanager_secret_version" "webhook_url" {
@@ -7,7 +7,7 @@ data "aws_secretsmanager_secret_version" "webhook_url" {
 }
 
 resource "aws_secretsmanager_secret" "hygraph_token" {
-  name = "webby/hygraph-token"
+  name = "webby/webby/hygraph-token"
 }
 
 data "aws_secretsmanager_secret_version" "hygraph_token" {
@@ -15,7 +15,7 @@ data "aws_secretsmanager_secret_version" "hygraph_token" {
 }
 
 resource "aws_secretsmanager_secret" "hygraph_endpoint" {
-  name = "webby/hygraph-endpoint"
+  name = "webby/webby/hygraph-endpoint"
 }
 
 data "aws_secretsmanager_secret_version" "hygraph_endpoint" {
@@ -23,7 +23,7 @@ data "aws_secretsmanager_secret_version" "hygraph_endpoint" {
 }
 
 resource "aws_secretsmanager_secret" "google_client_id" {
-  name = "guard/google-client-id"
+  name = "webby/guard/google-client-id"
 }
 
 data "aws_secretsmanager_secret_version" "google_client_id" {
@@ -31,7 +31,7 @@ data "aws_secretsmanager_secret_version" "google_client_id" {
 }
 
 resource "aws_secretsmanager_secret" "google_client_secret" {
-  name = "guard/google-client-secret"
+  name = "webby/guard/google-client-secret"
 }
 
 data "aws_secretsmanager_secret_version" "google_client_secret" {
