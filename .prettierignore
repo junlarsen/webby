@@ -2,6 +2,7 @@
 .idea
 .env
 .terraform
+.docusaurus
 
 node_modules
 dist
