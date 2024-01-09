@@ -7,6 +7,7 @@
     "build:fundwatcher": "turbo run build --filter=@webby/fundwatcher",
     "build:webmix": "turbo run build --filter=@webby/webmix",
     "build:wk": "turbo run build --filter=@webby/wk",
+    "build:ntnu": "turbo run build --filter=@webby/ntnu",
     "docker:dev": "turbo run docker:dev",
     "docker:push": "turbo run docker:push",
     "docker:login": "aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 351022664525.dkr.ecr.eu-north-1.amazonaws.com"

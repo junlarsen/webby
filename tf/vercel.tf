@@ -17,6 +17,20 @@ resource "vercel_project_domain" "wk_jun_codes" {
   project_id = vercel_project.wk.id
 }
 
+resource "vercel_project" "kompendie" {
+  name      = "kompendie"
+  framework = "docusaurus"
+
+  git_repository = {
+    production_branch = "main"
+    type              = "github"
+    repo              = "junlarsen/webby"
+  }
+
+  build_command  = "cd ../.. && pnpm build:ntnu"
+  root_directory = "apps/ntnu"
+}
+
 resource "vercel_project" "webby" {
   name      = "webmix"
   framework = "remix"
