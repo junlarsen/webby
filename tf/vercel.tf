@@ -31,6 +31,11 @@ resource "vercel_project" "kompendie" {
   root_directory = "apps/ntnu"
 }
 
+resource "vercel_project_domain" "kompendie_jun_codes" {
+  domain     = aws_route53_record.kompendie_jun_codes_cname.name
+  project_id = vercel_project.kompendie.id
+}
+
 resource "vercel_project" "webby" {
   name      = "webmix"
   framework = "remix"
