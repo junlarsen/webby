@@ -6,7 +6,6 @@
     "build": "turbo run build",
     "build:fundwatcher": "turbo run build --filter=@webby/fundwatcher",
     "build:webmix": "turbo run build --filter=@webby/webmix",
-    "build:wk": "turbo run build --filter=@webby/wk",
     "build:ntnu": "turbo run build --filter=@webby/ntnu",
     "docker:dev": "turbo run docker:dev",
     "docker:push": "turbo run docker:push",

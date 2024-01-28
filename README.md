@@ -6,8 +6,7 @@ Monorepo for all applications and infrastructure that runs at https://jun.codes
 
 - webmix: my personal website, remix.run app
 - fundwatcher: automated lambda to notify me of AWS expenses daily
-- wk: a speedy, mobile friendly wanikani review application
-- once: a one-time password sharing application
+- kompendie: my notes from ntnu, docusaurus app
 
 **Infrastructure**
 

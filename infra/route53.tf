@@ -22,16 +22,6 @@ resource "aws_route53_record" "www_jun_codes_cname" {
   ]
 }
 
-resource "aws_route53_record" "wk_jun_codes_cname" {
-  name    = "wk.jun.codes"
-  type    = "CNAME"
-  ttl     = 3600
-  zone_id = data.aws_route53_zone.jun_codes.zone_id
-  records = [
-    "cname.vercel-dns.com"
-  ]
-}
-
 resource "aws_route53_record" "kompendie_jun_codes_cname" {
   name    = "kompendie.jun.codes"
   type    = "CNAME"
