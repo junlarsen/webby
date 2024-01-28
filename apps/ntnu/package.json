@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "fmt": "biome check --apply .",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
@@ -26,6 +27,7 @@
     "remark-math": "6"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
     "@docusaurus/module-type-aliases": "3.1.0",
     "@docusaurus/tsconfig": "3.1.0",
     "@docusaurus/types": "3.1.0",

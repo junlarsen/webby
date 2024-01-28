@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{jsx,tsx}'],
+  content: ["./app/**/*.{jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        noto: ['"Noto Sans JP"', '"Noto Sans"', 'system-ui', 'sans-serif'],
+        noto: ['"Noto Sans JP"', '"Noto Sans"', "system-ui", "sans-serif"],
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require("@tailwindcss/typography")],
 };

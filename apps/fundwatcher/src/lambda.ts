@@ -1,7 +1,10 @@
-import { Handler } from 'aws-lambda';
-import { EmbedBuilder, WebhookClient } from 'discord.js';
-import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost-explorer';
-import { subMonths, format, parse, getWeek } from 'date-fns/esm';
+import {
+  CostExplorerClient,
+  GetCostAndUsageCommand,
+} from "@aws-sdk/client-cost-explorer";
+import { Handler } from "aws-lambda";
+import { format, getWeek, parse, subMonths } from "date-fns/esm";
+import { EmbedBuilder, WebhookClient } from "discord.js";
 
 const webhookUrl = process.env.WEBHOOK_URL;
 
@@ -20,29 +23,37 @@ export const handler: Handler = async () => {
   });
   const metrics = await client.send(
     new GetCostAndUsageCommand({
-      Granularity: 'DAILY',
-      Metrics: ['BlendedCost'],
+      Granularity: "DAILY",
+      Metrics: ["BlendedCost"],
       TimePeriod: {
-        Start: format(subMonths(new Date(), 1), 'yyyy-MM-dd'),
-        End: format(new Date(), 'yyyy-MM-dd'),
+        Start: format(subMonths(new Date(), 1), "yyyy-MM-dd"),
+        End: format(new Date(), "yyyy-MM-dd"),
       },
     }),
   );
   const embed = new EmbedBuilder()
-    .setTitle('AWS Cost Explorer | Usage past month')
-    .setDescription('Lists current billing usage for each day for the past month.')
+    .setTitle("AWS Cost Explorer | Usage past month")
+    .setDescription(
+      "Lists current billing usage for each day for the past month.",
+    )
     .setTimestamp()
     .setColor(0x48b9c7);
 
-  const timelineEntries: TimelineDataPoint[] = metrics.ResultsByTime.map((result) => {
-    const start = parse(result.TimePeriod.Start, 'yyyy-MM-dd', new Date());
-    const end = parse(result.TimePeriod.End, 'yyyy-MM-dd', new Date());
-    const cost = `${parseFloat(result.Total.BlendedCost.Amount).toFixed(2)} ${result.Total.BlendedCost.Unit}`;
+  const timelineEntries: TimelineDataPoint[] = metrics.ResultsByTime.map(
+    (result) => {
+      const start = parse(result.TimePeriod.Start, "yyyy-MM-dd", new Date());
+      const end = parse(result.TimePeriod.End, "yyyy-MM-dd", new Date());
+      const cost = `${parseFloat(result.Total.BlendedCost.Amount).toFixed(2)} ${
+        result.Total.BlendedCost.Unit
+      }`;
 
-    return { start, end, cost };
-  });
+      return { start, end, cost };
+    },
+  );
 
-  const partitions = timelineEntries.reduce<Record<string, TimelineDataPoint[]>>((acc, curr) => {
+  const partitions = timelineEntries.reduce<
+    Record<string, TimelineDataPoint[]>
+  >((acc, curr) => {
     const partitionKey = `W${getWeek(curr.start)}`;
     acc[partitionKey] ??= [];
     acc[partitionKey].push(curr);
@@ -52,11 +63,11 @@ export const handler: Handler = async () => {
   for (const [partitionKey, dataPoints] of Object.entries(partitions)) {
     const formattedPoints = dataPoints
       .map((point) => {
-        const start = format(point.start, 'do MMM');
-        const end = format(point.end, 'do MMM');
+        const start = format(point.start, "do MMM");
+        const end = format(point.end, "do MMM");
         return `${start} - ${end}: **${point.cost}**`;
       })
-      .join('\n');
+      .join("\n");
     embed.addFields({
       name: partitionKey,
       value: formattedPoints,

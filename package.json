@@ -1,7 +1,7 @@
 {
   "name": "@webby/root",
   "scripts": {
-    "fmt": "prettier . --write",
+    "fmt": "turbo run fmt",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "build:fundwatcher": "turbo run build --filter=@webby/fundwatcher",
@@ -12,11 +12,6 @@
     "docker:login": "aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 351022664525.dkr.ecr.eu-north-1.amazonaws.com"
   },
   "devDependencies": {
-    "prettier": "^3.0.1",
     "turbo": "^1.10.12"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120
   }
 }

@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "fmt": "biome check --apply .",
     "dev": "docker run -p 9000:8080 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e WEBHOOK_URL -e AWS_REGION=eu-north-1 fundwatcher:latest",
     "build": "tsup src/lambda.ts && echo '{\"type\":\"module\"}' > dist/package.json",
     "docker:dev": "docker build --platform linux/amd64 -t fundwatcher:latest -f Dockerfile ../..",
@@ -16,6 +17,7 @@
     "discord.js": "^14.13.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
     "@types/aws-lambda": "^8.10.119",
     "@types/node": "20.4.7",
     "tsup": "^7.2.0",

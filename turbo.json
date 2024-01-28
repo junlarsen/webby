@@ -13,6 +13,7 @@
     "docker:dev": {},
     "docker:push": {
       "dependsOn": ["^docker:dev"]
-    }
+    },
+    "fmt": {}
   }
 }

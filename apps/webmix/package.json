@@ -5,6 +5,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "fmt": "biome check --apply .",
     "build": "remix build",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
@@ -29,13 +30,12 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
     "@remix-run/dev": "^2.0.0",
-    "@remix-run/eslint-config": "^2.0.0",
     "@types/node": "^20.6.3",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.15",
-    "eslint": "^8.38.0",
     "postcss": "^8.4.30",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
