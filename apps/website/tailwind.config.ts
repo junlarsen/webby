@@ -17,13 +17,9 @@ export default {
         brand: transformScale(colors.cyan),
         grayscale: transformScale(colors.slate),
       },
-      maxWidth: {
-        baseline: "120rem",
-      },
       fontFamily: {
-        "noto-serif": ['"Noto Serif Display"', "serif"],
-        "source-serif-4": ["'Source Serif 4'", "serif"],
-        raleway: ['"Raleway"', "sans-serif"],
+        "noto-sans": ["'Noto Sans'", "sans-serif"],
+        "noto-serif": ["'Noto Serif'", "serif"],
       },
       keyframes: {
         slideDown: {},

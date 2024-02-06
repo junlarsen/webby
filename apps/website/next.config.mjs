@@ -5,6 +5,9 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   pageExtensions: ["tsx", "mdx"],
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default withMdx()(nextConfig);

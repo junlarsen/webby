@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import type { Metadata } from "next";
+import { Noto_Sans, Noto_Serif } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 
@@ -53,9 +55,16 @@ export const metadata: Metadata = {
   },
 };
 
+const notoSans = Noto_Sans({ subsets: ["latin"] });
+const notoSerif = Noto_Serif({ subsets: ["latin"] });
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="no" dir="ltr">
+    <html
+      lang="no"
+      dir="ltr"
+      className={clsx(notoSans.className, notoSerif.className)}
+    >
       <body>{children}</body>
     </html>
   );
