@@ -1,0 +1,6 @@
+@import '@radix-ui/colors/cyan.css';
+@import '@radix-ui/colors/slate.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
