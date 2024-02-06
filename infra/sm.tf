@@ -21,19 +21,3 @@ resource "aws_secretsmanager_secret" "hygraph_endpoint" {
 data "aws_secretsmanager_secret_version" "hygraph_endpoint" {
   secret_id = aws_secretsmanager_secret.hygraph_endpoint.id
 }
-
-resource "aws_secretsmanager_secret" "google_client_id" {
-  name = "webby/guard/google-client-id"
-}
-
-data "aws_secretsmanager_secret_version" "google_client_id" {
-  secret_id = aws_secretsmanager_secret.google_client_id.id
-}
-
-resource "aws_secretsmanager_secret" "google_client_secret" {
-  name = "webby/guard/google-client-secret"
-}
-
-data "aws_secretsmanager_secret_version" "google_client_secret" {
-  secret_id = aws_secretsmanager_secret.google_client_secret.id
-}
