@@ -61,7 +61,7 @@ const notoSerif = Noto_Serif({ subsets: ["latin"] });
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
-      lang="no"
+      lang="en"
       dir="ltr"
       className={clsx(notoSans.className, notoSerif.className)}
     >

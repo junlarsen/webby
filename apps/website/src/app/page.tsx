@@ -1,8 +1,9 @@
+import { ConstrainedWidth } from "@/components/atoms/constrained-width";
 import { CalloutSection } from "@/components/organisms/callout-section";
 
 export default function IndexPage() {
   return (
-    <main className="w-screen h-screen flex items-center">
+    <main>
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-grayscale-6 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
@@ -26,7 +27,9 @@ export default function IndexPage() {
           fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
         />
       </svg>
-      <CalloutSection />
+      <ConstrainedWidth className="items-center">
+        <CalloutSection />
+      </ConstrainedWidth>
     </main>
   );
 }
