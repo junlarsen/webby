@@ -30,32 +30,34 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
         <Link href="/about">About</Link>
       </div>
 
-      <div className="flex gap-2">
-        <a href="https://github.com/junlarsen">
-          <img
-            src="/assets/github.svg"
-            alt="GitHub logo mark"
-            height={24}
-            width={24}
-          />
-        </a>
-        <a href="https://linkedin.com/in/mats-jun-larsen">
-          <img
-            src="/assets/linkedin.svg"
-            alt="LinkedIn logo mark"
-            height={24}
-            width={24}
-          />
-        </a>
-        <a href="mailto:mats@jun.codes">
-          <img
-            src="/assets/gmail.svg"
-            alt="Google mail logo mark"
-            height={24}
-            width={24}
-          />
-        </a>
-      </div>
+      {isHome && (
+        <div className="flex gap-2">
+          <a href="https://github.com/junlarsen">
+            <img
+              src="/assets/github.svg"
+              alt="GitHub logo mark"
+              height={24}
+              width={24}
+            />
+          </a>
+          <a href="https://linkedin.com/in/mats-jun-larsen">
+            <img
+              src="/assets/linkedin.svg"
+              alt="LinkedIn logo mark"
+              height={24}
+              width={24}
+            />
+          </a>
+          <a href="mailto:mats@jun.codes">
+            <img
+              src="/assets/gmail.svg"
+              alt="Google mail logo mark"
+              height={24}
+              width={24}
+            />
+          </a>
+        </div>
+      )}
     </div>
   );
 };
