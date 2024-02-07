@@ -59,8 +59,8 @@ export default function ExperiencePage() {
 
         <div className="mt-32 flex flex-col gap-32">
           {jobs.map(({ title, duration, description, tags }) => (
-            <div className="flex flex-col gap-2 w-full">
-              <Heading className="inline-flex flex-col w-full">
+            <div className="flex flex-col gap-2">
+              <Heading className="inline-flex flex-col">
                 <span className="font-normal tracking-tight text-sm font-noto-serif text-grayscale-11">
                   {duration}
                 </span>
